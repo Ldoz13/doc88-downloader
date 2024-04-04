@@ -9,6 +9,6 @@ Packages to install using pip,
  - ocrmypdf
 
 
-dependencies for ocrmypdf refer: https://ocrmypdf.readthedocs.io/en/latest/installation.html#installing-on-windows
+For ocrmypdf refer: https://ocrmypdf.readthedocs.io/en/latest/installation.html#installing-on-windows
 
  
