@@ -19,13 +19,22 @@ Possible options are:
 
 > [!NOTE]  
 > In case of Chrome, if you set `archive` to `none`, the first time you download pages you may see a popup stating that "This site is attempting to download multiple files". You have to allow it, as with this option each page will be downloaded as a separate file.
-Usage: `ocrmypdf input.pdf output.pdf` for OCR conversion pdf to pdf.
 
-Packages to install using pip,
+
+#### Packages to install using pip,
 
  - img2pdf
  - ocrmypdf
 
+#### Conversion 
+
+Use `python convert.py` to convert the images to pdf.
+
+> [!NOTE]  
+> Rename the directory to book
+
+
+Usage: `ocrmypdf input.pdf output.pdf` for OCR conversion pdf to pdf.
 
 For ocrmypdf refer: https://ocrmypdf.readthedocs.io/en/latest/installation.html#installing-on-windows
 
