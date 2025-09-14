@@ -1,41 +1,93 @@
-# doc88 Downloader
 
-#### Options
+# 📘 Doc88 Downloader
 
-`downloadPages` function takes an optional options object:
+A simple tool to download Doc88 pages, convert them into PDF, and make them searchable using OCR.
 
-```javascript
-downloadPages({fromPage: 2, toPage: 10, quality: 0.8, imageNamePrefix: 'temp_'})
+---
+
+## 🚀 Quick Start
+
+1. **Download pages** using `downloadPages()` (example below).  
+2. **Rename the output folder** to `book`.  
+3. **Convert images to PDF** with `convert.py`.  
+4. **(Optional)** Run OCR to make the PDF searchable.  
+
+---
+
+## 🔽 Download Options
+
+The `downloadPages()` function accepts an **options object**:
+
+
+downloadPages({
+  fromPage: 2,
+  toPage: 10,
+  format: 'jpg',
+  quality: 0.8,
+  imageNamePrefix: 'temp_',
+  archive: 'zip'
+})
+
+### Available Options
+
+1. **`fromPage`** → First page to download
+   * Type: `number`
+   * Default: `1`
+
+2. **`toPage`** → Last page to download
+   * Type: `number`
+   * Default: *last page of the document*
+
+3. **`format`** → Output image format
+   * Type: `'jpg'` | `'png'`
+   * Default: `'jpg'`
+
+4. **`quality`** → Image quality *(only for JPG)*
+   * Type: `0 – 1`
+   * Default: `0.9`
+
+5. **`imageNamePrefix`** → Prefix for downloaded files
+   * Type: `string`
+   * Default: `'page'`
+   * Example: `page001.jpg`, `page002.jpg`, …
+
+6. **`archive`** → Archive type for downloads
+   * Type: `'zip'` | `'none'`
+   * Default: `'zip'`
+   * ⚠️ If you set `'none'`, each page downloads separately.
+     In Chrome, you may see a popup:
+     *"This site is attempting to download multiple files"*.
+     You must allow it.
+
+---
+
+## 📦 Python Setup
+
+Install the required packages:
+
+```bash
+pip install img2pdf ocrmypdf
 ```
 
-Possible options are:
+---
 
-1. `fromPage` – first page in range to be downloaded; number; default is `1`
-2. `toPage` – last page in range to be downloaded; number; default is total number of pages in the document
-3. `format` – downloaded image format; string; either `'jpg'` or `'png'`; default is `'jpg'`
-4. `quality` – quality of images; applicable when `format` is `'jpg'`; number between `0` and `1`; default is `0.9`
-5. `imageNamePrefix` – prefix for names of downloaded images; string; default is `'page'` (resulting in downloaded file names e.g.: `page001.jpg`, `page002.jpg`, etc. assuming `format` is `'jpg'`)
-6. `archive` – type of archive to put the captured images in; string; either `'zip'` or `'none'`; default is `'zip'`; `'none'` will result in each image downloaded as a separate file
+## 📑 Conversion Workflow
 
-> [!NOTE]  
-> In case of Chrome, if you set `archive` to `none`, the first time you download pages you may see a popup stating that "This site is attempting to download multiple files". You have to allow it, as with this option each page will be downloaded as a separate file.
+1. **Rename your folder** to `book`
+   (This is the directory containing the downloaded images)
 
+2. **Convert images → PDF**
+   ```bash
+   python convert.py
+   ```
 
-#### Packages to install using pip,
+3. **(Optional) Apply OCR**
+   To make your PDF searchable:
+   ```bash
+   ocrmypdf input.pdf output.pdf
+   ```
 
- - img2pdf
- - ocrmypdf
+📖 More details: [OCRmyPDF Installation Guide](https://ocrmypdf.readthedocs.io/en/latest/installation.html#installing-on-windows)
 
-#### Conversion 
-
-Use `python convert.py` to convert the images to pdf.
-
-> [!NOTE]  
-> Rename the directory to book
-
-
-Usage: `ocrmypdf input.pdf output.pdf` for OCR conversion pdf to pdf.
-
-For ocrmypdf refer: https://ocrmypdf.readthedocs.io/en/latest/installation.html#installing-on-windows
-
- 
+---
+✅ That's it! You'll end up with a **searchable PDF** created from your downloaded Doc88 pages.
