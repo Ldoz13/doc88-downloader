@@ -1,93 +1,23 @@
 
 # 📘 Doc88 Downloader
 
-A simple tool to download Doc88 pages, convert them into PDF, and make them searchable using OCR.
+# Canvas Pages to PDF
 
----
+A simple JavaScript tool to combine canvas-rendered webpage pages into a single PDF.
 
-## 🚀 Quick Start
+## How to Use
 
-1. **Download pages** using `downloadPages()` (example below).  
-2. **Rename the output folder** to `book`.  
-3. **Convert images to PDF** with `convert.py`.  
-4. **(Optional)** Run OCR to make the PDF searchable.  
+1. Open the webpage containing the document.
+2. Press `F12` and open the **Console** tab.
+3. Copy and paste the JavaScript code into the console and press `Enter`.
+4. Wait for all pages to load and the print dialog to open.
+5. Select **Save as PDF** and click **Save**.
 
----
+The script displays live progress while processing the pages.
 
-## 🔽 Download Options
+## Requirements
 
-The `downloadPages()` function accepts an **options object**:
+- Google Chrome or Microsoft Edge
+- Pop-ups enabled for the website
 
-
-downloadPages({
-  fromPage: 2,
-  toPage: 10,
-  format: 'jpg',
-  quality: 0.8,
-  imageNamePrefix: 'temp_',
-  archive: 'zip'
-})
-
-### Available Options
-
-1. **`fromPage`** → First page to download
-   * Type: `number`
-   * Default: `1`
-
-2. **`toPage`** → Last page to download
-   * Type: `number`
-   * Default: *last page of the document*
-
-3. **`format`** → Output image format
-   * Type: `'jpg'` | `'png'`
-   * Default: `'jpg'`
-
-4. **`quality`** → Image quality *(only for JPG)*
-   * Type: `0 – 1`
-   * Default: `0.9`
-
-5. **`imageNamePrefix`** → Prefix for downloaded files
-   * Type: `string`
-   * Default: `'page'`
-   * Example: `page001.jpg`, `page002.jpg`, …
-
-6. **`archive`** → Archive type for downloads
-   * Type: `'zip'` | `'none'`
-   * Default: `'zip'`
-   * ⚠️ If you set `'none'`, each page downloads separately.
-     In Chrome, you may see a popup:
-     *"This site is attempting to download multiple files"*.
-     You must allow it.
-
----
-
-## 📦 Python Setup
-
-Install the required packages:
-
-```bash
-pip install img2pdf ocrmypdf
-```
-
----
-
-## 📑 Conversion Workflow
-
-1. **Rename your folder** to `book`
-   (This is the directory containing the downloaded images)
-
-2. **Convert images → PDF**
-   ```bash
-   python convert.py
-   ```
-
-3. **(Optional) Apply OCR**
-   To make your PDF searchable:
-   ```bash
-   ocrmypdf input.pdf output.pdf
-   ```
-
-📖 More details: [OCRmyPDF Installation Guide](https://ocrmypdf.readthedocs.io/en/latest/installation.html#installing-on-windows)
-
----
-✅ That's it! You'll end up with a **searchable PDF** created from your downloaded Doc88 pages.
+**Note:** The script expects page canvases with IDs like `page_1`, `page_2`, etc.
